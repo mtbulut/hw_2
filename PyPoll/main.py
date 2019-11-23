@@ -9,12 +9,18 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
     count = 0
     for row in in_csv:
         voter = row[0]
-        count +=1
+        count += 1
 
     data = list(in_csv)
-    # print(data[0:5])
-    clean_data = [[int(e.strip()) for e in row] for row in data if row[2].strip() == 'khan']
-    print(clean_data)
+
+    for row in data:
+        if row[2] == "Khan":
+            for e in row:
+                print(e)
+
+
+    # clean_data = [[e for e in row] for row in data if row[2].strip() == 'Khan']
+    # print(clean_data)
 
 
 
