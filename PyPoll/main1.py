@@ -70,18 +70,11 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
 
     print('--------------------------------------')
 
+
+# The only part is missing is round the persentages....
+
 ###############################################################################
 
-    "Total Votes: 3521001 DONE with THIS"
-    '-------------------------'
-    'Khan: 63.000 % (2218231)'
-    'Correy: 20.000 % (704200)'
-    'Li: 14.000 % (492940)'
-
-    'Tooley: 3.000% (105630)'
-    '-------------------------'
-    'Winner: Khan'
-    '-------------------------'
 
 
 
