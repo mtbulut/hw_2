@@ -3,35 +3,27 @@ import csv
 import pprint
 
 
-with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
-    in_csv = csv.reader(in_file)
-    header = next(in_csv)
-    print(header)
+with open(os.path.join("Resources","election_data1.csv"), "r") as in_file:
+    csv_reader = csv.DictReader(in_file)
+    # header = next(in_csv)
+    data = list(csv_reader)
+    print(data)
 
 ###################################################
     count = 0
-    for row in in_csv:
+    for row in data:
         count += 1
-    data = list(in_csv)
+    data = list(data)
+
+    print('Election Results')
+
+    print("---------------------------")
+    print("Total votes: " + str(count))
 
 ####################################################
 
-    candidate_names = []
+   
 
-    for row in in_csv:
-        if row[2] not in candidate_names:
-            candidate_names.append(row[2])
-        else:
-            continue
-    print(candidate_names)
-
-
-
-
-    # print(candidate_names)
-    print(candidate_names)
-
-    # for candidate in candidate_names:
 
 
 
@@ -45,10 +37,7 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
     # pprint.pprint(sorted_data)
 
 
-    print('Election Results')
-
-    print("---------------------------")
-    print("Total votes: " + str(count))
+    
 
 
 
