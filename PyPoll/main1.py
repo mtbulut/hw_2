@@ -2,6 +2,7 @@ import os
 import csv
 import pprint
 import math
+from decimal import Decimal
 
 
 with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
@@ -18,9 +19,9 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
 
     print('Election Results')
 
-    print("---------------------------")
+    print("-" * 30)
     print("Total votes: " + str(count))
-    print("---------------------------")
+    print("-" * 30)
 
 ####################################################
 
@@ -32,34 +33,34 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
             candidate_names.append(row[2])
         else:
             continue
-    print(candidate_names)
-
+    # print(candidate_names)
+# I should have a for loop here not to repead it. 
     total_vote_khan = 0
     for row in data:
         if row[2] == candidate_names[0]:
             total_vote_khan +=1
-    print(f"{candidate_names[0]}: {(total_vote_khan/count)*100} % ({total_vote_khan}) ")
+    print(f"{candidate_names[0]}: {round((total_vote_khan/count)*100, 3)} % ({total_vote_khan}) ")
 
     total_vote_Correy = 0
     for row in data:
         if row[2] == candidate_names[1]:
             total_vote_Correy +=1
-    print(f"{candidate_names[1]}: {(total_vote_Correy/count)*100} % ({total_vote_Correy}) ")
+    print(f"{candidate_names[1]}: {round((total_vote_Correy/count)*100, 3)} % ({total_vote_Correy}) ")
 
     total_vote_li = 0
     for row in data:
         if row[2] == candidate_names[2]:
             total_vote_li +=1
-    print(f"{candidate_names[2]}: {(total_vote_li/count)*100} % ({total_vote_li}) ")
+    print(f"{candidate_names[2]}: {round((total_vote_li/count)*100,3)} % ({total_vote_li}) ")
 
     total_vote_Tooley = 0
     for row in data:
         if row[2] == candidate_names[3]:
             total_vote_Tooley +=1
-    print(f"{candidate_names[3]}: {(total_vote_Tooley/count)*100} % ({total_vote_Tooley}) ")
+    print(f"{candidate_names[3]}: {round((total_vote_Tooley/count)*100,3)} % ({total_vote_Tooley}) ")
 
 # who is the winner?
-    print('-------------------------------------')
+    print("-" * 30)
 
     if max(total_vote_Correy,total_vote_khan,total_vote_li) == total_vote_khan:
         print(f'Winner: {candidate_names[0]}') 
@@ -68,7 +69,7 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
     else:
         print(f'Winner: {candidate_names[2]}')
 
-    print('--------------------------------------')
+    print("-" * 30)
 
 
 # The only part is missing is round the persentages....
