@@ -2,7 +2,7 @@ import os
 import csv
 import pprint
 import math
-from decimal import Decimal
+import decimal
 
 
 with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
