@@ -1,5 +1,8 @@
 import os 
 import csv
+import numpy
+import math
+
 # user input can be written here. 
 with open(os.path.join("Resources", "budget_data.csv"), "r") as my_file:
     my_csv = csv.reader(my_file)
@@ -7,7 +10,7 @@ with open(os.path.join("Resources", "budget_data.csv"), "r") as my_file:
     header = next(my_csv)
     
 
-# print("              " + " Financial Analisis " + "             ")
-# print("---------------------------------------------------------")
+print("Financial Analisis")
+print("-"* 30)
 
 
