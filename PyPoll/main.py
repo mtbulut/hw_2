@@ -1,61 +1,64 @@
 import os
 import csv
 import pprint
+import math
+import decimal
 
 
-with open(os.path.join("Resources","election_data1.csv"), "r") as in_file:
-    csv_reader = csv.DictReader(in_file)
-    # header = next(in_csv)
-    data = list(csv_reader)
-    print(data)
+with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
+    in_csv = csv.reader(in_file)
+    header = next(in_csv) # activating this will exculede the firs line. 
+    data = list(in_csv)
+    # print(data)
 
 ###################################################
     count = 0
     for row in data:
         count += 1
-    data = list(data)
+    
 
     print('Election Results')
 
-    print("---------------------------")
+    print("-" * 30)
     print("Total votes: " + str(count))
+    print("-" * 30)
 
 ####################################################
 
-   
+    candidate_names = []
 
+    for row in data:
+        if row[2].strip() not in candidate_names:
 
+            candidate_names.append(row[2])
+        else:
+            continue
+##################################################
+    # winner =[]
+    voters = {}
+    for cand in candidate_names:
+        total_vote = 0
+        for row in data:
+            if row[2] == cand:
+                total_vote +=1
+                # winner.append(total_vote)
+        voters[cand]= total_vote
+                
 
+        print(f"{cand}: {round((total_vote/count)*100, 3)} % ({total_vote}) ")
+    winner_vote = max(voters.values()) 
+    winner = list(voters.keys())[list(voters.values()).index(winner_vote)]
 
+# who is the winner?
+##############################################
+    print("-" * 30)
 
+    print(f"Winner:  {winner}")
 
-    # clean_data = [[e for e in row] for row in data if row[2].strip() == 'Khan']
-    # # print(clean_data)
-    #
-    # sorted_data = max(clean_data, key=lambda row: row[1])  # row[1] yerine ayni sekilde sum(row[2]) yazilabilir.
-    #
-    # pprint.pprint(sorted_data)
-
-
-    
-
-
-
-
-
+    print("-" * 30)
 
 ###############################################################################
 
-    "Total Votes: 3521001 DONE with THIS"
-    '-------------------------'
-    'Khan: 63.000 % (2218231)'
-    'Correy: 20.000 % (704200)'
-    'Li: 14.000 % (492940)'
-
-    'Tooley: 3.000% (105630)'
-    '-------------------------'
-    'Winner: Khan'
-    '-------------------------'
 
 
 
