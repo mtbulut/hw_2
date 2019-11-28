@@ -20,7 +20,7 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
     print('Election Results')
 
     print("-" * 30)
-    print("Total votes: " + str(count))
+    print(f"Total votes: {count:,}"  )
     print("-" * 30)
 
 ####################################################
@@ -45,7 +45,7 @@ with open(os.path.join("Resources","election_data.csv"), "r") as in_file:
         voters[cand]= total_vote
                 
 
-        print(f"{cand}: {round((total_vote/count)*100, 3)} % ({total_vote}) ")
+        print(f"{cand}: {round((total_vote/count)*100, 3)} % ({total_vote:,}) ")
     winner_vote = max(voters.values()) 
     winner = list(voters.keys())[list(voters.values()).index(winner_vote)]
 

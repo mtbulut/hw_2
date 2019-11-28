@@ -12,7 +12,7 @@ with open(os.path.join("Resources", "budget_data.csv"), "r") as my_file:
     # print(data)                   
     
     count =0
-    for month in data:
+    for row in data:
         count += 1
 
     all_amount = []
@@ -20,7 +20,13 @@ with open(os.path.join("Resources", "budget_data.csv"), "r") as my_file:
         amount = num[1]
         all_amount.append(int(amount))
 
+    all_month = []
+    for num in data:
+        month = num[0]
+        all_month.append((month))
     
+
+   
     average_change = round((int(data[-1][1]) - int(data[0][1]))/count)
 
     difference_rows_inc =[]
@@ -30,13 +36,20 @@ with open(os.path.join("Resources", "budget_data.csv"), "r") as my_file:
     max_difference_row = max(difference_rows_inc)
     min_difference_row = min(difference_rows_inc)
 
+    
+    inc_month = all_month[(difference_rows_inc.index(max_difference_row))+1]
+    
+    dec_month = all_month[(difference_rows_inc.index(min_difference_row))+1]
+   
+    
+
     print("Financial Analisis")
     print("-"* 30)
     print(f'Total months: {count}')
     print(f'Total: ${sum(all_amount):,}')
     print(f"Average Change: ${average_change:,}")
-    print(f"Greatest Increase in Profits: ${max_difference_row:,}")
-    print(f"Greatest Decrease in Profits: ${min_difference_row:,}")
+    print(f"Greatest Increase in Profits: {inc_month } ${max_difference_row:,}")
+    print(f"Greatest Decrease in Profits: {dec_month }${min_difference_row:,}")
     
 
 
