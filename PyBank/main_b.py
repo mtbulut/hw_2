@@ -20,17 +20,23 @@ with open(os.path.join("Resources", "budget_data.csv"), "r") as my_file:
         amount = num[1]
         all_amount.append(int(amount))
 
-    # sorted_amount = sorted(all_amount)
-    average_change = (int(data[-1][1]) - int(data[0][1]))/count
-    # average_change = sum(all_amount)/count
+    
+    average_change = round((int(data[-1][1]) - int(data[0][1]))/count)
 
-        # print(all_total)    
+    difference_rows_inc =[]
+    for i in range(len(all_amount)-1):
+        dif = all_amount[i+1] - all_amount[i] 
+        difference_rows_inc.append(dif)
+    max_difference_row = max(difference_rows_inc)
+    min_difference_row = min(difference_rows_inc)
 
     print("Financial Analisis")
     print("-"* 30)
     print(f'Total months: {count}')
-    print(f'Total: {sum(all_amount)}')
-    print(average_change)
+    print(f'Total: ${sum(all_amount):,}')
+    print(f"Average Change: ${average_change:,}")
+    print(f"Greatest Increase in Profits: ${max_difference_row:,}")
+    print(f"Greatest Decrease in Profits: ${min_difference_row:,}")
     
 
 
