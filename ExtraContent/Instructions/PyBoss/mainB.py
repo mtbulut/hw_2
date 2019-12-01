@@ -103,7 +103,16 @@ with open( "employee_data.csv", "r") as in_file:
 
         SSN.append(f_ssn)
     # print(SSN)
-        row(4)
+        formatted_state = state_abbr[row[4]]
+        State.append(formatted_state)
+    # print(State)
+
+    new_data = zip(Emp_ID, First_Name, Last_Name, DOB, SSN, State)
+
+    with open( "up_employee_data.csv", "w") as out_file: 
+        csv_writer = csv.writer(out_file, delimiter=",")
+        csv_writer.writerow([["Emp ID", "First Name", "Last Name", "DOB", "SSN", "State"]])
+        csv_writer.writerows(new_data)
    
 
     
